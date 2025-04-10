@@ -36,73 +36,48 @@ export const article = defineType({
     }),
 
     defineField({
+      name: "featured",
+      title: "Featured",
+      type: "boolean",
+      initialValue: false,
+    }),
+
+    defineField({
       name: "image",
       title: "Image",
       type: "image",
       validation: (Rule) => Rule.required().error("Image is required"),
     }),
-
-    defineField({
+    {
       name: "category",
-      title: "Category",
-      type: "string",
-      options: {
-        list: [
-          { title: "general", value: "general" },
-          { title: "career", value: "career" },
-          { title: "architecture", value: "architecture" },
-          { title: "backend", value: "backend" },
-          { title: "frontenr", value: "frontend" },
-          { title: "testing", value: "testing" },
-          { title: "tools", value: "tools" },
-          { title: "database", value: "database" },
-        ],
-        layout: "dropdown",
-      },
+      type: "reference",
+      to: [{ type: "category" }],
       validation: (Rule) => Rule.required().error("Category is required"),
-    }),
-
-    defineField({
+    },
+    {
       name: "tags",
-      title: "Tags",
       type: "array",
-      of: [{ type: "string" }],
-      options: {
-        list: [
-          { title: "react", value: "react" },
-          { title: "javascript", value: "javascript" },
-          { title: "typescript", value: "typescript" },
-          { title: "css", value: "css" },
-          { title: "html", value: "html" },
-          { title: "nodejs", value: "nodejs" },
-          { title: "testing", value: "testing" },
-          { title: "express", value: "express" },
-          { title: "mongodb", value: "mongodb" },
-          { title: "sql", value: "sql" },
-          { title: "docker", value: "docker" },
-          { title: "cloud", value: "cloud" },
-        ],
-        layout: "list",
-      },
-      validation: (Rule) => Rule.min(1).error("Select at least one tag"),
-    }),
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "tag" }],
+        },
+      ],
+      validation: (Rule) => Rule.min(1),
+    },
 
     defineField({
       name: "excerpt",
       title: "Excerpt",
       type: "text",
-      validation: (Rule) => Rule.required().error("Excerpt is required"),
+      validation: (Rule) =>
+        Rule.required().min(50).max(200).error("Excerpt is required"),
     }),
     defineField({
       name: "content",
       title: "Content",
       type: "markdown",
       validation: (Rule) => Rule.required().error("Content is required"),
-    }),
-    defineField({
-      name: "videoId",
-      title: "Youtube Video ID",
-      type: "string",
     }),
   ],
 })
