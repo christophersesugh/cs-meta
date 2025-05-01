@@ -63,15 +63,14 @@ export const article = defineType({
           to: [{ type: "tag" }],
         },
       ],
-      validation: (Rule) => Rule.min(1),
+      validation: (Rule) => Rule.min(1).error("Atleast one tag is required."),
     },
 
     defineField({
       name: "excerpt",
       title: "Excerpt",
       type: "text",
-      validation: (Rule) =>
-        Rule.required().min(50).max(200).error("Excerpt is required"),
+      validation: (Rule) => Rule.required().error("Excerpt is required"),
     }),
     defineField({
       name: "content",

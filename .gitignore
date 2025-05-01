@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 .env
+/.yalc
+yalc.lock
 
 # Compiled Sanity Studio
 /dist
