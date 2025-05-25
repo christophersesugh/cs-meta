@@ -78,5 +78,16 @@ export const article = defineType({
       type: "markdown",
       validation: (Rule) => Rule.required().error("Content is required"),
     }),
+    defineField({
+      name: "sandpackTemplates",
+      title: "Embedded Sandpack Templates",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "sandpack" }],
+        },
+      ],
+    }),
   ],
 })

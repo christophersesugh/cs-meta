@@ -1,5 +1,7 @@
 import { article } from "./article"
-import { category } from "./category"
-import { tag } from "./tag"
+import { category } from "./shared/category"
+import { tag } from "./shared/tag"
 
-export const schemaTypes = [article, category, tag]
+import { sandpack } from "./sandpack"
+
+export const schemaTypes = [article, category, tag, sandpack]
