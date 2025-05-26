@@ -30,3 +30,5 @@ yalc.lock
 
 # Dotenv and similar local-only files
 *.local
+sanity.types.ts
+schema.json

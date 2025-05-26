@@ -1,9 +1,11 @@
 import { defineField, defineType } from "sanity"
+import { BookIcon } from "@sanity/icons"
 
 export const article = defineType({
   name: "article",
   title: "Articles",
   type: "document",
+  icon: BookIcon,
   fields: [
     defineField({
       name: "title",
@@ -20,6 +22,7 @@ export const article = defineType({
         maxLength: 96,
       },
       validation: (Rule) => Rule.required().error("Slug is required"),
+      hidden: ({ document }) => !document?.title,
     }),
     defineField({
       name: "createdAt",
@@ -90,4 +93,12 @@ export const article = defineType({
       ],
     }),
   ],
+
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "excerpt",
+      media: "image",
+    },
+  },
 })
