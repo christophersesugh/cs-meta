@@ -92,6 +92,17 @@ export const article = defineType({
         },
       ],
     }),
+    defineField({
+      name: "reactComponents",
+      title: "Embedded React Components",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "component" }],
+        },
+      ],
+    }),
   ],
 
   preview: {

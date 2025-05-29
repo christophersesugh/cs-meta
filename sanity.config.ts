@@ -3,6 +3,8 @@ import { structureTool } from "sanity/structure"
 import { visionTool } from "@sanity/vision"
 import { markdownSchema } from "sanity-plugin-markdown"
 import { schemaTypes } from "./schemaTypes"
+import { codeInput } from "@sanity/code-input"
+import { StreamLanguage } from "@codemirror/language"
 
 export default defineConfig({
   name: "default",
@@ -11,7 +13,7 @@ export default defineConfig({
   projectId: "3alj5od9",
   dataset: "production",
 
-  plugins: [structureTool(), visionTool(), markdownSchema()],
+  plugins: [structureTool(), visionTool(), markdownSchema(), codeInput()],
 
   schema: {
     types: schemaTypes,
